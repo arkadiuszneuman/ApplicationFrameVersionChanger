@@ -16,6 +16,7 @@ using ApplicationFrameVersionChanger.FileTextSaver;
 using ApplicationFrameVersionChanger.RootNamespaceGetter;
 using ApplicationFrameVersionChanger.VersionChanger;
 using ApplicationFrameVersionChanger.VersionChanger.AssemblyInfoChanger;
+using ApplicationFrameVersionChanger.VersionChanger.AssemblyInfoPathGetter;
 using ApplicationFrameVersionChanger.VersionChanger.DocumentationElementGetter;
 using ApplicationFrameVersionChanger.VersionChanger.TFSFileCheckouter;
 using DevExpress.XtraEditors;
@@ -39,7 +40,7 @@ namespace ApplicationFrameVersionChanger
         {
             if (File.Exists(frtxtSlnPath.Text))
             {
-                Cl_CurrentVersionFinder vrlCurrentVersionFinder = new Cl_CurrentVersionFinder(new Cl_CsprojFinder(), new Cl_FileTextLoader(), new Cl_AssemblyElementGetter(), new Cl_RootNamespaceGetter());
+                Cl_CurrentVersionFinder vrlCurrentVersionFinder = new Cl_CurrentVersionFinder(new Cl_CsprojFinder(), new Cl_FileTextLoader(), new Cl_AssemblyInfoPathGetter());
                 string vrlCurrentVersion = vrlCurrentVersionFinder.GetCurrentVersion(frtxtSlnPath.Text);
                 frtxtVersion.Text = vrlCurrentVersion;
             }
@@ -52,9 +53,10 @@ namespace ApplicationFrameVersionChanger
         private void btnChangeVersion_Click(object sender, EventArgs e)
         {
             Cl_TFSFileCheckout vrlTFSFileCheckout = new Cl_TFSFileCheckout(Path.GetDirectoryName(frtxtSlnPath.Text));
-            Cl_AssemblyInfoChanger vrlAssemblyInfoChanger = new Cl_AssemblyInfoChanger(vrlTFSFileCheckout, new Cl_FileTextLoader(), new Cl_FileTextSaver());
+            Cl_AssemblyInfoChanger vrlAssemblyInfoChanger = new Cl_AssemblyInfoChanger(vrlTFSFileCheckout, new Cl_FileTextLoader(), new Cl_FileTextSaver(), new Cl_AssemblyInfoPathGetter());
 
-            Cl_VersionChanger vrlVersionChanger = new Cl_VersionChanger(new Cl_CsprojFinder(), new Cl_AssemblyElementGetter(), new Cl_RootNamespaceGetter(), vrlTFSFileCheckout, vrlAssemblyInfoChanger, new Cl_DocumentationFileElementGetter());
+            Cl_VersionChanger vrlVersionChanger = new Cl_VersionChanger(new Cl_CsprojFinder(), new Cl_AssemblyElementGetter(), new Cl_RootNamespaceGetter(), vrlTFSFileCheckout, vrlAssemblyInfoChanger,
+                new Cl_DocumentationFileElementGetter(), new Cl_CurrentVersionFinder(new Cl_CsprojFinder(), new Cl_FileTextLoader(), new Cl_AssemblyInfoPathGetter()));
             vrlVersionChanger.ChangeVersion(frtxtSlnPath.Text, frtxtVersion.Text, frbitTfs.Checked);
         }
     }

@@ -55,6 +55,7 @@
     <Compile Include="CsprojFinder\Cl_CsprojFinder.cs" />
     <Compile Include="CsprojFinder\I_CsprojFinder.cs" />
     <Compile Include="CurrentVersionFinder\Cl_CurrentVersionFinder.cs" />
+    <Compile Include="CurrentVersionFinder\I_CurrentVersionFinder.cs" />
     <Compile Include="FileTextLoader\I_FileTextLoader.cs" />
     <Compile Include="FileTextLoader\Cl_FileTextLoader.cs" />
     <Compile Include="FileTextSaver\Cl_FileTextSaver.cs" />
@@ -71,6 +72,8 @@
     <Compile Include="RootNamespaceGetter\I_RootNamespaceGetter.cs" />
     <Compile Include="VersionChanger\AssemblyInfoChanger\Cl_AssemblyInfoChanger.cs" />
     <Compile Include="VersionChanger\AssemblyInfoChanger\I_AssemblyInfoChanger.cs" />
+    <Compile Include="VersionChanger\AssemblyInfoPathGetter\Cl_AssemblyInfoPathGetter.cs" />
+    <Compile Include="VersionChanger\AssemblyInfoPathGetter\I_AssemblyInfoPathGetter.cs" />
     <Compile Include="VersionChanger\Cl_VersionChanger.cs" />
     <Compile Include="VersionChanger\DocumentationElementGetter\Cl_DocumentationElementGetter.cs" />
     <Compile Include="VersionChanger\DocumentationElementGetter\I_DocumentationFileElementGetter.cs" />

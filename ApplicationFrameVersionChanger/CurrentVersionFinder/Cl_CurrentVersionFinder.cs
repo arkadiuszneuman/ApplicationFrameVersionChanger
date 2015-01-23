@@ -1,36 +1,41 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using ApplicationFrameVersionChanger.AssemblyElementGetter;
 using ApplicationFrameVersionChanger.CsprojFinder;
 using ApplicationFrameVersionChanger.FileTextLoader;
-using ApplicationFrameVersionChanger.RootNamespaceGetter;
+using ApplicationFrameVersionChanger.VersionChanger.AssemblyInfoPathGetter;
 
 namespace ApplicationFrameVersionChanger.CurrentVersionFinder
 {
-    public class Cl_CurrentVersionFinder
+    public class Cl_CurrentVersionFinder : I_CurrentVersionFinder
     {
         private readonly I_CsprojFinder vrcCsprojFinder;
         private readonly I_FileTextLoader vrcFileTextLoader;
-        private readonly I_AssemblyElementGetter vrcAssemblyElementGetter;
-        private readonly I_RootNamespaceGetter vrcRootNamespaceGetter;
 
-        public Cl_CurrentVersionFinder(I_CsprojFinder vrpCsprojFinder, I_FileTextLoader vrpFileTextLoader, I_AssemblyElementGetter vrpAssemblyElementGetter, I_RootNamespaceGetter vrpRootNamespaceGetter)
+        private readonly I_AssemblyInfoPathGetter vrcAssemblyInfoPathGetter;
+
+        public Cl_CurrentVersionFinder(I_CsprojFinder vrpCsprojFinder, I_FileTextLoader vrpFileTextLoader, I_AssemblyInfoPathGetter vrpAssemblyInfoPathGetter)
         {
             vrcCsprojFinder = vrpCsprojFinder;
             vrcFileTextLoader = vrpFileTextLoader;
-            vrcAssemblyElementGetter = vrpAssemblyElementGetter;
-            vrcRootNamespaceGetter = vrpRootNamespaceGetter;
+            vrcAssemblyInfoPathGetter = vrpAssemblyInfoPathGetter;
         }
 
         public string GetCurrentVersion(string vrpSlnFile)
         {
             string vrlCsProjFile = vrcCsprojFinder.FindCsProjs(vrpSlnFile).Single(f => Path.GetFileNameWithoutExtension(f).Contains("inSolutions.Utilities"));
-            string vrlTextFromFile = vrcFileTextLoader.GetTextFromFile(vrlCsProjFile);
+            string vrlAssemblyInfoPath = vrcAssemblyInfoPathGetter.GetAssemblyInfoPath(vrlCsProjFile);
+            string vrlAssemblyInfoText = vrcFileTextLoader.GetTextFromFile(vrlAssemblyInfoPath);
+            foreach (string vrlLine in vrlAssemblyInfoText.Split(new [] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                if (vrlLine.Contains("AssemblyVersion") && !vrlLine.Contains("//"))
+                {
+                    return vrlLine.Replace("[assembly: AssemblyVersion(\"", "").Replace("\")]", "");
+                }
+            }
 
-            XDocument vrlDocument = XDocument.Load(new StringReader(vrlTextFromFile));
-            XElement vrlAssemblyElement = vrcAssemblyElementGetter.GetAssemblyElement(vrlDocument);
-            return vrlAssemblyElement.Value.Replace(vrcRootNamespaceGetter.GetRootNamespace(vrlDocument).Value + '.', "");
+            return null;
         }
     }
 }
