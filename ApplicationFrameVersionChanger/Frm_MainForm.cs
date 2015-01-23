@@ -16,6 +16,7 @@ using ApplicationFrameVersionChanger.FileTextSaver;
 using ApplicationFrameVersionChanger.RootNamespaceGetter;
 using ApplicationFrameVersionChanger.VersionChanger;
 using ApplicationFrameVersionChanger.VersionChanger.AssemblyInfoChanger;
+using ApplicationFrameVersionChanger.VersionChanger.DocumentationElementGetter;
 using ApplicationFrameVersionChanger.VersionChanger.TFSFileCheckouter;
 using DevExpress.XtraEditors;
 
@@ -53,7 +54,7 @@ namespace ApplicationFrameVersionChanger
             Cl_TFSFileCheckout vrlTFSFileCheckout = new Cl_TFSFileCheckout(Path.GetDirectoryName(frtxtSlnPath.Text));
             Cl_AssemblyInfoChanger vrlAssemblyInfoChanger = new Cl_AssemblyInfoChanger(vrlTFSFileCheckout, new Cl_FileTextLoader(), new Cl_FileTextSaver());
 
-            Cl_VersionChanger vrlVersionChanger = new Cl_VersionChanger(new Cl_CsprojFinder(), new Cl_AssemblyElementGetter(), new Cl_RootNamespaceGetter(), vrlTFSFileCheckout, vrlAssemblyInfoChanger);
+            Cl_VersionChanger vrlVersionChanger = new Cl_VersionChanger(new Cl_CsprojFinder(), new Cl_AssemblyElementGetter(), new Cl_RootNamespaceGetter(), vrlTFSFileCheckout, vrlAssemblyInfoChanger, new Cl_DocumentationFileElementGetter());
             vrlVersionChanger.ChangeVersion(frtxtSlnPath.Text, frtxtVersion.Text, frbitTfs.Checked);
         }
     }

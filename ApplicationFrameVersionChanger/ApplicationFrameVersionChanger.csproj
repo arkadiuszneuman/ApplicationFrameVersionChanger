@@ -72,6 +72,8 @@
     <Compile Include="VersionChanger\AssemblyInfoChanger\Cl_AssemblyInfoChanger.cs" />
     <Compile Include="VersionChanger\AssemblyInfoChanger\I_AssemblyInfoChanger.cs" />
     <Compile Include="VersionChanger\Cl_VersionChanger.cs" />
+    <Compile Include="VersionChanger\DocumentationElementGetter\Cl_DocumentationElementGetter.cs" />
+    <Compile Include="VersionChanger\DocumentationElementGetter\I_DocumentationFileElementGetter.cs" />
     <Compile Include="VersionChanger\TFSFileCheckouter\Cl_TFSFileCheckout.cs" />
     <Compile Include="VersionChanger\TFSFileCheckouter\I_TFSFileCheckout.cs" />
     <EmbeddedResource Include="Frm_MainForm.resx">
