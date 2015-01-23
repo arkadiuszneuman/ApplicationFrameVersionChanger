@@ -30,12 +30,12 @@
         {
             this.frtxtSlnPath = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.frtxtOutputDirectory = new DevExpress.XtraEditors.TextEdit();
+            this.frtxtVersion = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnChangeVersion = new DevExpress.XtraEditors.SimpleButton();
             this.frbitTfs = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.frtxtSlnPath.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frtxtOutputDirectory.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frtxtVersion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frbitTfs.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,6 +49,7 @@
             this.frtxtSlnPath.Name = "frtxtSlnPath";
             this.frtxtSlnPath.Size = new System.Drawing.Size(566, 20);
             this.frtxtSlnPath.TabIndex = 10;
+            this.frtxtSlnPath.EditValueChanged += new System.EventHandler(this.frtxtSlnPath_EditValueChanged);
             // 
             // labelControl2
             // 
@@ -58,15 +59,15 @@
             this.labelControl2.TabIndex = 9;
             this.labelControl2.Text = "Solucja wejściowa:";
             // 
-            // frtxtOutputDirectory
+            // frtxtVersion
             // 
-            this.frtxtOutputDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.frtxtVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.frtxtOutputDirectory.EditValue = "";
-            this.frtxtOutputDirectory.Location = new System.Drawing.Point(108, 44);
-            this.frtxtOutputDirectory.Name = "frtxtOutputDirectory";
-            this.frtxtOutputDirectory.Size = new System.Drawing.Size(566, 20);
-            this.frtxtOutputDirectory.TabIndex = 8;
+            this.frtxtVersion.EditValue = "";
+            this.frtxtVersion.Location = new System.Drawing.Point(108, 44);
+            this.frtxtVersion.Name = "frtxtVersion";
+            this.frtxtVersion.Size = new System.Drawing.Size(566, 20);
+            this.frtxtVersion.TabIndex = 8;
             // 
             // labelControl1
             // 
@@ -84,6 +85,7 @@
             this.btnChangeVersion.Size = new System.Drawing.Size(114, 23);
             this.btnChangeVersion.TabIndex = 6;
             this.btnChangeVersion.Text = "Zmień wersję";
+            this.btnChangeVersion.Click += new System.EventHandler(this.btnChangeVersion_Click);
             // 
             // frbitTfs
             // 
@@ -102,13 +104,13 @@
             this.Controls.Add(this.frbitTfs);
             this.Controls.Add(this.frtxtSlnPath);
             this.Controls.Add(this.labelControl2);
-            this.Controls.Add(this.frtxtOutputDirectory);
+            this.Controls.Add(this.frtxtVersion);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.btnChangeVersion);
             this.Name = "Frm_MainForm";
             this.Text = "Zmiana wersji szkieletu";
             ((System.ComponentModel.ISupportInitialize)(this.frtxtSlnPath.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frtxtOutputDirectory.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frtxtVersion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frbitTfs.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -119,7 +121,7 @@
 
         private DevExpress.XtraEditors.TextEdit frtxtSlnPath;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.TextEdit frtxtOutputDirectory;
+        private DevExpress.XtraEditors.TextEdit frtxtVersion;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton btnChangeVersion;
         private DevExpress.XtraEditors.CheckEdit frbitTfs;

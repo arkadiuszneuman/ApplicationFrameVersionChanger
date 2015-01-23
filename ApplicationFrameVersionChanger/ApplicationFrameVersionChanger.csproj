@@ -32,8 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Utils.v14.2, Version=14.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v14.2, Version=14.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.VersionControl.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Printing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,14 +50,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="AssemblyElementGetter\Cl_AssemblyElementGetter.cs" />
+    <Compile Include="AssemblyElementGetter\I_AssemblyElementGetter.cs" />
+    <Compile Include="CsprojFinder\Cl_CsprojFinder.cs" />
+    <Compile Include="CsprojFinder\I_CsprojFinder.cs" />
+    <Compile Include="CurrentVersionFinder\Cl_CurrentVersionFinder.cs" />
+    <Compile Include="FileTextLoader\I_FileTextLoader.cs" />
+    <Compile Include="FileTextLoader\Cl_FileTextLoader.cs" />
+    <Compile Include="FileTextSaver\Cl_FileTextSaver.cs" />
+    <Compile Include="FileTextSaver\I_FileTextSaver.cs" />
+    <Compile Include="Frm_MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Frm_MainForm.Designer.cs">
+      <DependentUpon>Frm_MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RootNamespaceGetter\Cl_RootNamespaceGetter.cs" />
+    <Compile Include="RootNamespaceGetter\I_RootNamespaceGetter.cs" />
+    <Compile Include="VersionChanger\AssemblyInfoChanger\Cl_AssemblyInfoChanger.cs" />
+    <Compile Include="VersionChanger\AssemblyInfoChanger\I_AssemblyInfoChanger.cs" />
+    <Compile Include="VersionChanger\Cl_VersionChanger.cs" />
+    <Compile Include="VersionChanger\TFSFileCheckouter\Cl_TFSFileCheckout.cs" />
+    <Compile Include="VersionChanger\TFSFileCheckouter\I_TFSFileCheckout.cs" />
+    <EmbeddedResource Include="Frm_MainForm.resx">
+      <DependentUpon>Frm_MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -74,6 +100,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
