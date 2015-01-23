@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace ApplicationFrameVersionChanger
 {
-    public partial class Form1 : Form
+    public partial class Frm_MainForm : XtraForm
     {
-        public Form1()
+        public Frm_MainForm()
         {
             InitializeComponent();
         }
