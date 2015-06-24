@@ -22,10 +22,9 @@ namespace ApplicationFrameVersionChanger.CurrentVersionFinder
             vrcAssemblyInfoPathGetter = vrpAssemblyInfoPathGetter;
         }
 
-        public string GetCurrentVersion(string vrpSlnFile)
+        public string GetCurrentVersionFromCsproj(string vrpCsprojFile)
         {
-            string vrlCsProjFile = vrcCsprojFinder.FindCsProjs(vrpSlnFile).Single(f => Path.GetFileNameWithoutExtension(f).Contains("inSolutions.Utilities"));
-            string vrlAssemblyInfoPath = vrcAssemblyInfoPathGetter.GetAssemblyInfoPath(vrlCsProjFile);
+            string vrlAssemblyInfoPath = vrcAssemblyInfoPathGetter.GetAssemblyInfoPath(vrpCsprojFile);
             string vrlAssemblyInfoText = vrcFileTextLoader.GetTextFromFile(vrlAssemblyInfoPath);
             foreach (string vrlLine in vrlAssemblyInfoText.Split(new [] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries))
             {
@@ -36,6 +35,12 @@ namespace ApplicationFrameVersionChanger.CurrentVersionFinder
             }
 
             return null;
+        }
+
+        public string GetCurrentVersion(string vrpSlnFile)
+        {
+            string vrlCsProjFile = vrcCsprojFinder.FindCsProjs(vrpSlnFile).Single(f => Path.GetFileNameWithoutExtension(f).Contains("inSolutions.Utilities"));
+            return GetCurrentVersionFromCsproj(vrlCsProjFile);
         }
     }
 }

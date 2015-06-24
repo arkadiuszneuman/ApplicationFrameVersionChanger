@@ -50,7 +50,7 @@ namespace ApplicationFrameVersionChanger.VersionChanger
                 XElement vrlAssemblyElement = vrcAssemblyElementGetter.GetAssemblyElement(vrlDocument);
                 XElement vrlRootNamespace = vrcRootNamespaceGetter.GetRootNamespace(vrlDocument);
 
-                string vrlOldVersion = vrcCurrentVersionFinder.GetCurrentVersion(vrpSlnPath);
+                string vrlOldVersion = vrcCurrentVersionFinder.GetCurrentVersionFromCsproj(vrlCsproj);
 
                 if (vrpCheckoutFiles)
                 {
