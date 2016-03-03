@@ -89,7 +89,7 @@
             // 
             // frbitTfs
             // 
-            this.frbitTfs.EditValue = true;
+            this.frbitTfs.Enabled = false;
             this.frbitTfs.Location = new System.Drawing.Point(24, 77);
             this.frbitTfs.Name = "frbitTfs";
             this.frbitTfs.Properties.Caption = "Checkout plików w TFS";

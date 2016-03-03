@@ -12,8 +12,6 @@ using ApplicationFrameVersionChanger.VersionChanger.AssemblyInfoChanger;
 using ApplicationFrameVersionChanger.VersionChanger.AssemblyInfoPathGetter;
 using ApplicationFrameVersionChanger.VersionChanger.DocumentationElementGetter;
 using ApplicationFrameVersionChanger.VersionChanger.TFSFileCheckouter;
-using Microsoft.TeamFoundation.Client;
-using Microsoft.TeamFoundation.VersionControl.Client;
 
 namespace ApplicationFrameVersionChanger.VersionChanger
 {
