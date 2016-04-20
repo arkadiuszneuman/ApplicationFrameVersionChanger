@@ -14,6 +14,7 @@ namespace ApplicationFrameVersionChanger.FileTextSaver
 
             if (File.Exists(vrpFilePath))
             {
+                File.SetAttributes(vrpFilePath, FileAttributes.Normal);
                 File.Delete(vrpFilePath);
             }
 

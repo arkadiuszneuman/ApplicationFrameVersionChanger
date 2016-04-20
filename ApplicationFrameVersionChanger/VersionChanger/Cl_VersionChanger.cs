@@ -12,8 +12,6 @@ using ApplicationFrameVersionChanger.VersionChanger.AssemblyInfoChanger;
 using ApplicationFrameVersionChanger.VersionChanger.AssemblyInfoPathGetter;
 using ApplicationFrameVersionChanger.VersionChanger.DocumentationElementGetter;
 using ApplicationFrameVersionChanger.VersionChanger.TFSFileCheckouter;
-using Microsoft.TeamFoundation.Client;
-using Microsoft.TeamFoundation.VersionControl.Client;
 
 namespace ApplicationFrameVersionChanger.VersionChanger
 {
@@ -65,6 +63,7 @@ namespace ApplicationFrameVersionChanger.VersionChanger
                 vrcAssemblyInfoChanger.ChangeAssemblyInfo(vrlCsproj, vrlOldVersion, vrpNewVersion, vrpCheckoutFiles);
 
                 vrlAssemblyElement.SetValue(vrlRootNamespace.Value + '.' +  vrpNewVersion.Replace(".*", ""));
+                File.SetAttributes(vrlCsproj, FileAttributes.Normal);
                 vrlDocument.Save(vrlCsproj);
             }
         }

@@ -1,6 +1,6 @@
 ﻿using System;
-using Microsoft.TeamFoundation.Client;
-using Microsoft.TeamFoundation.VersionControl.Client;
+//using Microsoft.TeamFoundation.Client;
+//using Microsoft.TeamFoundation.VersionControl.Client;
 
 namespace ApplicationFrameVersionChanger.VersionChanger.TFSFileCheckouter
 {
@@ -16,12 +16,12 @@ namespace ApplicationFrameVersionChanger.VersionChanger.TFSFileCheckouter
 
         public void CheckoutFile(string vrpFile)
         {
-            var server = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(new Uri(vrsServerName));
-            var versionControl = (VersionControlServer)server.GetService(typeof(VersionControlServer));
-            // open a workspace.
-            var workspace = versionControl.GetWorkspace(vrcWorkspace);
+            //var server = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(new Uri(vrsServerName));
+            //var versionControl = (VersionControlServer)server.GetService(typeof(VersionControlServer));
+            //// open a workspace.
+            //var workspace = versionControl.GetWorkspace(vrcWorkspace);
 
-            var result = workspace.PendEdit(vrpFile);
+            //var result = workspace.PendEdit(vrpFile);
         }
     }
 }
