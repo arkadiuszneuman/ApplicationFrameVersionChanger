@@ -18,7 +18,7 @@ namespace ApplicationFrameVersionChanger.VersionChanger.TFSFileCheckouter
         {
             //var server = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(new Uri(vrsServerName));
             //var versionControl = (VersionControlServer)server.GetService(typeof(VersionControlServer));
-            //// open a workspace.
+            // open a workspace.
             //var workspace = versionControl.GetWorkspace(vrcWorkspace);
 
             //var result = workspace.PendEdit(vrpFile);
